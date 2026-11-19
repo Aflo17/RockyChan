@@ -3,52 +3,285 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>RockyChan Support</title>
+<title>RockyChan · Pet care for the whole family</title>
+<meta name="description" content="One tap to feed. Everyone in the family sees who did what, and your pet lives in the app as its own little Chan.">
 <link rel="icon" href="icon.png">
+<link rel="apple-touch-icon" href="icon.png">
+<meta property="og:title" content="RockyChan · Pet care for the whole family">
+<meta property="og:description" content="One tap to feed. Everyone in the family sees who did what, and your pet lives in the app as its own little Chan.">
+<meta property="og:image" content="icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&display=swap" rel="stylesheet">
+<!-- The RockyChan homepage (approved canvas boards SiteDesktop / SitePhone, Nov 19, 2026).
+     Source: docs/home/index.html, copied into site/ by scripts/build-legal-site.js. -->
 <style>
-:root { --page:#EEF4FF; --card:#FFFFFF; --ink:#1B2540; --soft:#4A5470; --muted:#5B6478; --primary:#2457D6; --line:#D9E3F7; }
-@media (prefers-color-scheme: dark) { :root { --page:#0F1526; --card:#172036; --ink:#E8EDF8; --soft:#C3CBDD; --muted:#9AA4BB; --primary:#7FA3FF; --line:#26324F; } }
-* { box-sizing: border-box; }
-body { margin:0; background:var(--page); color:var(--ink); font:16px/1.65 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
-header { background:var(--card); border-bottom:1px solid var(--line); }
-.wrap { max-width:720px; margin:0 auto; padding:0 16px; }
-.bar { display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap; padding:14px 0; }
-.brand { display:flex; align-items:center; gap:10px; font-weight:800; font-size:18px; color:var(--ink); text-decoration:none; }
-.brand img { width:36px; height:36px; border-radius:9px; }
-nav { display:flex; gap:16px; }
-nav a { color:var(--muted); text-decoration:none; font-weight:600; font-size:15px; }
-nav a.on, nav a:hover { color:var(--primary); }
-main { background:var(--card); border:1px solid var(--line); border-radius:18px; padding:8px 24px 24px; margin:24px 0; }
-@media (max-width:520px) { main { padding:4px 16px 16px; border-radius:14px; } }
-h1 { font-size:28px; line-height:1.2; margin:20px 0 8px; }
-h2 { font-size:19px; margin:28px 0 8px; }
-p, li { color:var(--soft); }
-strong { color:var(--ink); }
-ul, ol { padding-left:22px; margin:8px 0; }
-li { margin:4px 0; }
-ol > li { margin:12px 0; }
-a { color:var(--primary); overflow-wrap:anywhere; }
-footer { color:var(--muted); font-size:13px; text-align:center; padding:0 0 32px; }
+:root { --ink:#1B2540; --blue:#2457D6; --page:#EEF4FF; --muted:#4A5470; --soft:#5B6478; --line:#D3DDF2; }
+* { box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body { margin:0; background:linear-gradient(180deg,#DCE9FF 0,var(--page) 900px,var(--page) 100%); color:var(--ink); font-family:Nunito, system-ui, -apple-system, "Segoe UI", sans-serif; font-weight:700; }
+a { color:inherit; }
+img { max-width:100%; }
+.wrap { max-width:1280px; margin:0 auto; padding:18px 64px 40px; display:flex; flex-direction:column; gap:80px; }
+.nav { position:sticky; top:12px; z-index:5; display:flex; align-items:center; gap:14px; background:#fff; border-radius:18px; padding:10px 14px; box-shadow:0 6px 16px rgba(27,37,64,.06); }
+.nav .brand { display:flex; align-items:center; gap:14px; flex:1; text-decoration:none; font-size:18px; font-weight:900; }
+.nav .brand img { width:34px; height:34px; border-radius:9px; }
+.nav .links a { font-size:14px; font-weight:800; color:var(--muted); text-decoration:none; margin-left:14px; }
+.nav .links a:hover { color:var(--blue); }
+.lang { all:unset; cursor:pointer; font-size:13px; font-weight:900; color:var(--muted); border:2px solid #E3EAF7; border-radius:10px; padding:4px 8px; }
+.lang:focus-visible, .dl:focus-visible, .q:focus-visible { outline:3px solid var(--blue); outline-offset:2px; }
+.dl { font-size:14px; font-weight:900; color:#fff; background:var(--ink); border-radius:12px; padding:9px 14px; text-decoration:none; }
+.kicker { font-size:13px; font-weight:900; color:var(--blue); letter-spacing:2px; text-transform:uppercase; }
+.hero { display:flex; align-items:center; justify-content:space-between; gap:30px; padding:40px 0; }
+.hero-text { display:flex; flex-direction:column; gap:18px; max-width:560px; }
+h1 { margin:0; font-size:64px; font-weight:900; line-height:1.02; }
+.lead { font-size:20px; color:var(--muted); line-height:1.5; margin:0; }
+.stores { display:flex; gap:12px; align-items:center; }
+.store { display:flex; align-items:center; gap:10px; background:var(--ink); color:#fff; border-radius:14px; padding:10px 18px; justify-content:center; }
+.store .glyph { font-size:26px; line-height:1; }
+.store .glyph svg { width:24px; height:24px; display:block; fill:#fff; }
+.store .t { display:flex; flex-direction:column; line-height:1.1; }
+.store .t small { font-size:11px; font-weight:700; }
+.store .t b { font-size:19px; font-weight:900; }
+.soon { font-size:12px; font-weight:800; color:var(--soft); }
+.phone { width:310px; height:644px; flex:none; border-radius:46px; background:#fff; border:10px solid var(--ink); overflow:hidden; display:flex; flex-direction:column; box-shadow:0 30px 60px rgba(36,87,214,.25); }
+.phone .screen { padding:20px 16px 0; display:flex; flex-direction:column; gap:9px; background:var(--page); flex:1; }
+.phone .app { font-size:17px; font-weight:900; text-align:center; }
+.phone .who { font-size:18px; font-weight:900; }
+.phone .btns { display:flex; gap:6px; }
+.phone .btns span { flex:1; height:55px; border-radius:14px; color:#fff; font-size:12px; font-weight:900; display:flex; align-items:center; justify-content:center; text-align:center; padding:0 4px; }
+.phone .fed { font-size:11px; font-weight:800; background:#fff; border-radius:8px; padding:4px 8px; align-self:flex-start; }
+.room { position:relative; width:100%; aspect-ratio:1/1; }
+.room > img:first-child { position:absolute; inset:0; width:100%; height:100%; }
+.room .pet { position:absolute; }
+.strip { display:flex; flex-wrap:wrap; justify-content:center; gap:10px; margin-top:-30px; }
+.strip span { background:#fff; border-radius:999px; padding:10px 16px; font-size:14px; font-weight:900; box-shadow:0 4px 12px rgba(27,37,64,.05); }
+section { display:flex; flex-direction:column; gap:28px; scroll-margin-top:90px; }
+.title { display:flex; flex-direction:column; gap:8px; align-items:center; text-align:center; }
+h2 { margin:0; font-size:40px; font-weight:900; line-height:1.1; }
+.grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+.card { background:#fff; border-radius:22px; padding:22px; display:flex; flex-direction:column; gap:10px; box-shadow:0 6px 16px rgba(27,37,64,.06); }
+.card .i { width:52px; height:52px; border-radius:16px; background:var(--page); display:flex; align-items:center; justify-content:center; font-size:26px; }
+.card h3 { margin:0; font-size:19px; font-weight:900; }
+.card p { margin:0; font-size:15px; color:var(--muted); line-height:1.5; }
+.sub { font-size:16px; color:var(--muted); text-align:center; line-height:1.5; max-width:720px; align-self:center; margin:-6px 0 0; }
+.roomcard { position:relative; border-radius:22px; overflow:hidden; background:#fff; box-shadow:0 6px 16px rgba(27,37,64,.06); }
+.roomcard > img:first-child { width:100%; display:block; }
+.roomcard .label { position:absolute; left:12px; bottom:12px; background:#fff; border-radius:10px; padding:4px 10px; font-size:13px; font-weight:900; }
+.zz { position:absolute; left:76%; top:52%; font-size:22px; font-weight:900; color:var(--blue); }
+.plan { background:var(--ink); color:#fff; border-radius:28px; padding:44px 56px; display:flex; gap:28px; align-items:center; scroll-margin-top:90px; }
+.plan .copy { flex:1; display:flex; flex-direction:column; gap:12px; }
+.plan .kicker { color:#9DB4E4; }
+.plan p { margin:0; font-size:16px; color:#C9D3E8; line-height:1.5; }
+.prices { display:flex; gap:12px; flex-wrap:wrap; justify-content:center; }
+.price { background:#fff; color:var(--ink); border-radius:20px; padding:18px 22px; min-width:150px; display:flex; flex-direction:column; gap:4px; }
+.price small { font-size:13px; font-weight:900; color:var(--soft); }
+.price b { font-size:30px; font-weight:900; }
+.price em { font-style:normal; font-size:13px; font-weight:800; color:var(--soft); }
+.price em.save { color:#2F9E44; }
+.faq { display:flex; flex-direction:column; gap:10px; max-width:820px; width:100%; align-self:center; }
+.item { background:#fff; border-radius:18px; box-shadow:0 4px 12px rgba(27,37,64,.05); }
+.q { all:unset; box-sizing:border-box; cursor:pointer; width:100%; padding:18px 20px; display:flex; align-items:center; gap:12px; border-radius:18px; }
+.q span:first-child { flex:1; font-size:17px; font-weight:900; }
+.q .sign { font-size:22px; font-weight:900; color:var(--blue); }
+.a { padding:0 20px 18px; font-size:15px; color:var(--muted); line-height:1.55; margin:0; }
+.cta { display:flex; flex-direction:column; align-items:center; gap:16px; text-align:center; padding:10px 0; scroll-margin-top:90px; }
+.cta img { width:160px; }
+footer { border-top:1px solid var(--line); padding-top:22px; display:flex; gap:12px; align-items:center; }
+footer .c { flex:1; font-size:13px; font-weight:800; color:var(--soft); }
+footer .c a { text-decoration:none; }
+footer nav a { font-size:13px; font-weight:900; color:var(--blue); text-decoration:none; margin-left:12px; }
+@media (max-width: 900px) {
+  .wrap { padding:18px 20px 40px; gap:48px; }
+  .nav .links { display:none; }
+  .hero { flex-direction:column; gap:40px; padding:20px 0; }
+  .hero-text { align-items:center; text-align:center; }
+  h1 { font-size:42px; }
+  .lead { font-size:17px; }
+  .stores { flex-direction:column; align-items:stretch; width:100%; }
+  .phone { width:257px; height:532px; border-radius:38px; border-width:9px; }
+  .phone .screen { padding:17px 13px 0; gap:8px; }
+  .phone .app { font-size:14px; } .phone .who { font-size:15px; }
+  .phone .btns span { height:46px; font-size:10px; border-radius:11px; }
+  .phone .fed { font-size:10px; }
+  .strip { margin-top:-18px; }
+  h2 { font-size:30px; }
+  .grid { grid-template-columns:1fr; }
+  .plan { flex-direction:column; padding:28px 22px; }
+  .cta img { width:130px; }
+  footer { flex-direction:column; align-items:flex-start; }
+  footer nav a { margin:0 12px 0 0; }
+}
 </style>
 </head>
 <body>
-<header><div class="wrap bar"><a class="brand" href="./"><img src="icon.png" alt="">RockyChan</a><nav><a href="./" class="on">Support</a><a href="privacy-policy.html">Privacy</a><a href="terms.html">Terms</a></nav></div></header>
-<div class="wrap"><main>
-<h1>RockyChan Support</h1>
-<p>Need help with RockyChan? Email <strong><a href="mailto:aflores@dreamsflo.com">aflores@dreamsflo.com</a></strong> and we'll get back to you within two business days.</p>
-<h2>Common questions</h2>
-<p><strong>How do I invite my family?</strong><br>Open <strong>Family</strong>, tap <strong>Share link</strong>, and send it to them. They can also enter the code when they set up the app.</p>
-<p><strong>How do I add another pet?</strong><br>Go to <strong>Settings → Add another pet</strong>.</p>
-<p><strong>How do I make a new Chan?</strong><br>Tap your pet's face at the top of Home, then tap <strong>Make a new Chan</strong>. Each pet gets 3 new Chans a month.</p>
-<p><strong>I'm not getting notifications.</strong></p>
-<ul>
-<li>In RockyChan, check <strong>Settings → Notifications</strong>.
-</li>
-<li>Then check that notifications are allowed for RockyChan in your phone's Settings.
-</li></ul>
-<p><strong>How do I delete my account?</strong><br>Go to <strong>Settings → Delete account</strong>. This can't be undone.</p>
-<p><strong>Is RockyChan a vet?</strong><br>No. RockyChan keeps track of care for your family and your vet. It can't tell what something is. Call your vet about anything new or worrying.</p>
-</main></div>
-<footer>&copy; 2026 DreamsFlo LLC &middot; RockyChan</footer>
+<div class="wrap">
+  <header class="nav">
+    <a class="brand" href="./"><img src="icon.png" alt="">RockyChan</a>
+    <nav class="links"><a href="#features" data-t="nav_features">Features</a><a href="#plan" data-t="nav_plan">Family plan</a><a href="#faq" data-t="nav_faq">FAQ</a><a href="support.html" data-t="nav_support">Support</a></nav>
+    <button class="lang" id="lang" type="button" aria-label="Español">EN</button>
+    <a class="dl" href="#download" data-t="download">Download</a>
+  </header>
+
+  <div class="hero">
+    <div class="hero-text">
+      <span class="kicker" data-t="hero_kicker">Pet care for the whole family</span>
+      <h1 data-t="hero_title">Care for your pet, together</h1>
+      <p class="lead" data-t="hero_lead">One tap to feed. Everyone in the family sees who did what, and your pet lives in the app as its own little Chan.</p>
+      <div class="stores">STORES</div>
+      <span class="soon" data-t="soon">Coming soon · 7 days free</span>
+    </div>
+    <div class="phone" aria-hidden="true">
+      <div class="screen">
+        <span class="app">🐾 RockyChan</span>
+        <span class="who" data-t="phone_who">Rocky &amp; Pablo</span>
+        <div class="btns"><span style="background:#E8590C" data-t="feed">Feed</span><span style="background:#1C7ED6" data-t="bathroom">Bathroom</span><span style="background:#7048E8" data-t="medicine">Medicine</span></div>
+        <span class="fed" data-t="fed">Fed 7:46 AM · Sam</span>
+        <div class="room"><img src="img/living-room.webp" alt=""><img class="pet" src="img/rocky.webp" alt="" style="left:30%;top:46%;width:30%"><img class="pet" src="img/pablo.webp" alt="" style="left:58%;top:60%;width:24%"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="strip"><span data-t="x1">✓ 7 days free</span><span data-t="x2">✓ One price for up to 4 people</span><span data-t="x3">✓ English and Español</span><span data-t="x4">✓ Works offline</span></div>
+
+  <section id="features">
+    <div class="title"><span class="kicker" data-t="f_kicker">Features</span><h2 data-t="f_title">Everything your family needs to care for your pets</h2></div>
+    <div class="grid">
+      <div class="card"><span class="i">🍖</span><h3 data-t="f1t">One tap, everyone knows</h3><p data-t="f1b">Feed, Bathroom and Medicine in one tap. Your family gets a heads-up, so Rocky never gets fed twice.</p></div>
+      <div class="card"><span class="i">🐾</span><h3 data-t="f2t">Your pet's own Chan</h3><p data-t="f2b">Snap a photo and RockyChan draws your pet as its own little Chan, who lives in the app with you.</p></div>
+      <div class="card"><span class="i">💊</span><h3 data-t="f3t">Medicines, without the mix-ups</h3><p data-t="f3b">Reminders when a dose is due, and nobody can log the same dose twice.</p></div>
+      <div class="card"><span class="i">🩺</span><h3 data-t="f4t">Body map</h3><p data-t="f4b">Mark a lump or a scratch on your pet's map, add photos, and see if it changes over time.</p></div>
+      <div class="card"><span class="i">📁</span><h3 data-t="f5t">Vet files in one place</h3><p data-t="f5b">Keep vaccines, visits and lab results, and share them with your vet as one PDF.</p></div>
+      <div class="card"><span class="i">🎂</span><h3 data-t="f6t">Birthdays and weight</h3><p data-t="f6b">A reminder on the big day, and a weight chart drawn with your pet's Chan.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="title"><span class="kicker" data-t="r_kicker">A home for your pets</span><h2 data-t="r_title">Your Chans live here</h2></div>
+    <p class="sub" data-t="r_sub">They wander, nap on the bed, chase the ball and play together. Tap Feed and they walk to the fridge and carry their food to their own bowl.</p>
+    <div class="grid">
+      <div class="roomcard"><img src="img/living-room.webp" alt="" data-alt="living"><img class="pet" src="img/rocky.webp" alt="" style="position:absolute;left:60%;top:62%;width:22%"><span class="zz">z<sup>z</sup></span><span class="label" data-t="living">Living room</span></div>
+      <div class="roomcard"><img src="img/kitchen.webp" alt="" data-alt="kitchen"><img class="pet" src="img/pablo.webp" alt="" style="position:absolute;left:44%;top:66%;width:18%"><span class="label" data-t="kitchen">Kitchen</span></div>
+      <div class="roomcard"><img src="img/bathroom.webp" alt="" data-alt="bathroom_room"><span class="label" data-t="bathroom_room">Bathroom</span></div>
+    </div>
+  </section>
+
+  <div class="plan" id="plan">
+    <div class="copy">
+      <span class="kicker" data-t="p_kicker">Family plan</span>
+      <h2 data-t="p_title">One price for the whole family</h2>
+      <p data-t="p_body">Up to 4 people and 5 pets. Only the person who starts the family pays; everyone else joins free.</p>
+    </div>
+    <div class="prices">
+      <div class="price"><small data-t="monthly">Monthly</small><b>$4.99</b><em data-t="a_month">a month</em></div>
+      <div class="price"><small data-t="yearly">Yearly</small><b>$49.99</b><em class="save" data-t="two_free">2 months free</em></div>
+    </div>
+  </div>
+
+  <section id="faq">
+    <div class="title"><span class="kicker">FAQ</span><h2 data-t="q_title">Questions families ask</h2></div>
+    <div class="faq">FAQ</div>
+  </section>
+
+  <div class="cta" id="download">
+    <img src="img/rocky.webp" alt="">
+    <h2 data-t="cta">Bring your pet home to RockyChan</h2>
+    <div class="stores">STORES</div>
+    <span class="soon" data-t="soon">Coming soon · 7 days free</span>
+  </div>
+
+  <footer>
+    <span class="c">© 2026 DreamsFlo LLC · <a href="mailto:aflores@dreamsflo.com">aflores@dreamsflo.com</a></span>
+    <nav><a href="support.html" data-t="nav_support">Support</a><a href="privacy-policy.html" data-t="privacy">Privacy Policy</a><a href="terms.html" data-t="terms">Terms of Use</a></nav>
+  </footer>
+</div>
+
+<script>
+const T = {
+  en: {
+    title: 'RockyChan · Pet care for the whole family',
+    nav_features: 'Features', nav_plan: 'Family plan', nav_faq: 'FAQ', nav_support: 'Support', download: 'Download',
+    hero_kicker: 'Pet care for the whole family', hero_title: 'Care for your pet, together',
+    hero_lead: 'One tap to feed. Everyone in the family sees who did what, and your pet lives in the app as its own little Chan.',
+    soon: 'Coming soon · 7 days free', as_top: 'Download on the', gp_top: 'GET IT ON',
+    phone_who: 'Rocky & Pablo', feed: 'Feed', bathroom: 'Bathroom', medicine: 'Medicine', fed: 'Fed 7:46 AM · Sam',
+    x1: '✓ 7 days free', x2: '✓ One price for up to 4 people', x3: '✓ English and Español', x4: '✓ Works offline',
+    f_kicker: 'Features', f_title: 'Everything your family needs to care for your pets',
+    f1t: 'One tap, everyone knows', f1b: 'Feed, Bathroom and Medicine in one tap. Your family gets a heads-up, so Rocky never gets fed twice.',
+    f2t: "Your pet's own Chan", f2b: 'Snap a photo and RockyChan draws your pet as its own little Chan, who lives in the app with you.',
+    f3t: 'Medicines, without the mix-ups', f3b: 'Reminders when a dose is due, and nobody can log the same dose twice.',
+    f4t: 'Body map', f4b: "Mark a lump or a scratch on your pet's map, add photos, and see if it changes over time.",
+    f5t: 'Vet files in one place', f5b: 'Keep vaccines, visits and lab results, and share them with your vet as one PDF.',
+    f6t: 'Birthdays and weight', f6b: "A reminder on the big day, and a weight chart drawn with your pet's Chan.",
+    r_kicker: 'A home for your pets', r_title: 'Your Chans live here',
+    r_sub: 'They wander, nap on the bed, chase the ball and play together. Tap Feed and they walk to the fridge and carry their food to their own bowl.',
+    living: 'Living room', kitchen: 'Kitchen', bathroom_room: 'Bathroom',
+    p_kicker: 'Family plan', p_title: 'One price for the whole family',
+    p_body: 'Up to 4 people and 5 pets. Only the person who starts the family pays; everyone else joins free.',
+    monthly: 'Monthly', a_month: 'a month', yearly: 'Yearly', two_free: '2 months free',
+    q_title: 'Questions families ask', cta: 'Bring your pet home to RockyChan',
+    privacy: 'Privacy Policy', terms: 'Terms of Use', lang_label: 'Español',
+    faq: [
+      ['How does RockyChan work for a family?', 'One person starts the family and adds the pets. Everyone else joins with the family code. When anyone feeds, takes out or gives a medicine to a pet, the whole family sees it right away.'],
+      ['How much does it cost?', "Every family starts with 7 days free. Then it's $4.99 a month or $49.99 a year for the whole family: up to 4 people and 5 pets. Only the person who started the family pays."],
+      ['What is a Chan?', "It's your pet, drawn as a little character from a photo you take. Your Chan lives in the app's rooms, naps on the bed, plays with the ball and walks to its bowl at feeding time."],
+      ['Is RockyChan veterinary advice?', "No. RockyChan helps your family keep track of care and things you notice. Always follow your vet's advice."],
+      ['Does it work without signal?', "Yes. RockyChan keeps a copy on your phone, and feeding and bathroom logs made offline are sent when you're back online."],
+    ],
+  },
+  es: {
+    title: 'RockyChan · El cuidado de tu mascota, en familia',
+    nav_features: 'Funciones', nav_plan: 'Plan familiar', nav_faq: 'Preguntas', nav_support: 'Ayuda', download: 'Descargar',
+    hero_kicker: 'El cuidado de tu mascota, en familia', hero_title: 'Cuiden juntos a su mascota',
+    hero_lead: 'Un toque para darle de comer. Toda la familia ve quién hizo qué, y tu mascota vive en la app como su propio Chan.',
+    soon: 'Muy pronto · 7 días gratis', as_top: 'Descárgalo en el', gp_top: 'DISPONIBLE EN',
+    phone_who: 'Rocky y Pablo', feed: 'Dar de comer', bathroom: 'Baño', medicine: 'Medicina', fed: 'Comió 7:46 AM · Sam',
+    x1: '✓ 7 días gratis', x2: '✓ Un precio para hasta 4 personas', x3: '✓ Español e inglés', x4: '✓ Funciona sin conexión',
+    f_kicker: 'Funciones', f_title: 'Todo lo que tu familia necesita para cuidar a sus mascotas',
+    f1t: 'Un toque y todos se enteran', f1b: 'Comida, Baño y Medicina con un toque. Tu familia recibe un aviso, así Rocky nunca come dos veces.',
+    f2t: 'El propio Chan de tu mascota', f2b: 'Toma una foto y RockyChan dibuja a tu mascota como su propio Chan, que vive contigo en la app.',
+    f3t: 'Medicinas, sin confusiones', f3b: 'Recordatorios cuando toca una dosis, y nadie puede registrar la misma dosis dos veces.',
+    f4t: 'Mapa del cuerpo', f4b: 'Marca un bulto o un rasguño en el mapa de tu mascota, agrega fotos y mira si cambia con el tiempo.',
+    f5t: 'Archivos del veterinario en un solo lugar', f5b: 'Guarda vacunas, visitas y análisis, y compártelos con tu veterinario en un solo PDF.',
+    f6t: 'Cumpleaños y peso', f6b: 'Un recordatorio en el gran día, y una gráfica de peso con el Chan de tu mascota.',
+    r_kicker: 'Un hogar para tus mascotas', r_title: 'Aquí viven tus Chans',
+    r_sub: 'Pasean, duermen la siesta en la cama, persiguen la pelota y juegan juntos. Toca Dar de comer y caminan al refri y llevan su comida a su propio plato.',
+    living: 'Sala', kitchen: 'Cocina', bathroom_room: 'Baño',
+    p_kicker: 'Plan familiar', p_title: 'Un solo precio para toda la familia',
+    p_body: 'Hasta 4 personas y 5 mascotas. Solo paga quien crea la familia; los demás se unen gratis.',
+    monthly: 'Mensual', a_month: 'al mes', yearly: 'Anual', two_free: '2 meses gratis',
+    q_title: 'Preguntas de las familias', cta: 'Trae a tu mascota a RockyChan',
+    privacy: 'Política de privacidad', terms: 'Términos de uso', lang_label: 'English',
+    faq: [
+      ['¿Cómo funciona RockyChan en familia?', 'Una persona crea la familia y agrega las mascotas. Los demás se unen con el código familiar. Cuando alguien le da de comer, la saca al baño o le da una medicina, toda la familia lo ve al instante.'],
+      ['¿Cuánto cuesta?', 'Cada familia empieza con 7 días gratis. Después cuesta $4.99 al mes o $49.99 al año para toda la familia: hasta 4 personas y 5 mascotas. Solo paga quien creó la familia.'],
+      ['¿Qué es un Chan?', 'Es tu mascota, dibujada como un pequeño personaje a partir de una foto que tomas. Tu Chan vive en los cuartos de la app, duerme la siesta en la cama, juega con la pelota y camina a su plato a la hora de comer.'],
+      ['¿RockyChan da consejos veterinarios?', 'No. RockyChan ayuda a tu familia a llevar el control del cuidado y de lo que notan. Sigue siempre los consejos de tu veterinario.'],
+      ['¿Funciona sin señal?', 'Sí. RockyChan guarda una copia en tu teléfono, y los registros de comida y baño hechos sin conexión se envían cuando vuelves a tener señal.'],
+    ],
+  },
+};
+const APPLE = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.37 12.6c-.02-2.2 1.8-3.26 1.88-3.31-1.03-1.5-2.62-1.7-3.18-1.73-1.35-.14-2.64.8-3.33.8-.69 0-1.74-.78-2.87-.76-1.47.02-2.83.86-3.59 2.18-1.53 2.66-.39 6.59 1.1 8.75.73 1.05 1.6 2.24 2.73 2.2 1.1-.05 1.51-.71 2.84-.71 1.32 0 1.7.71 2.86.69 1.18-.02 1.93-1.07 2.65-2.13.84-1.22 1.18-2.4 1.2-2.46-.03-.01-2.3-.88-2.3-3.52zM14.2 6.13c.6-.73 1.01-1.74.9-2.75-.87.04-1.92.58-2.54 1.3-.56.64-1.05 1.67-.92 2.66.97.08 1.96-.49 2.56-1.21z"/></svg>';
+const PLAY = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 2.5v19l16-9.5z"/></svg>';
+let lang = 'en', open = 0;
+try { const s = localStorage.getItem('rc_lang'); lang = s === 'es' || s === 'en' ? s : (navigator.language || '').toLowerCase().startsWith('es') ? 'es' : 'en'; } catch (e) { lang = (navigator.language || '').toLowerCase().startsWith('es') ? 'es' : 'en'; }
+const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;');
+function render() {
+  const t = T[lang];
+  document.documentElement.lang = lang;
+  document.title = t.title;
+  document.querySelectorAll('[data-t]').forEach((el) => { el.textContent = t[el.dataset.t]; });
+  document.querySelectorAll('[data-alt]').forEach((el) => { el.alt = t[el.dataset.alt]; });
+  const b = document.getElementById('lang');
+  b.textContent = lang.toUpperCase(); b.setAttribute('aria-label', t.lang_label);
+  const store = (glyph, top, big) => `<div class="store"><span class="glyph">${glyph}</span><span class="t"><small>${top}</small><b>${big}</b></span></div>`;
+  document.querySelectorAll('.stores').forEach((el) => { el.innerHTML = store(APPLE, t.as_top, 'App Store') + store(PLAY, t.gp_top, 'Google Play'); });
+  document.querySelector('.faq').innerHTML = t.faq.map(([q, a], i) =>
+    `<div class="item"><button class="q" type="button" aria-expanded="${open === i}" data-i="${i}"><span>${esc(q)}</span><span class="sign" aria-hidden="true">${open === i ? '−' : '+'}</span></button>${open === i ? `<p class="a">${esc(a)}</p>` : ''}</div>`).join('');
+}
+document.querySelector('.faq').addEventListener('click', (e) => { const q = e.target.closest('.q'); if (!q) return; const i = +q.dataset.i; open = open === i ? -1 : i; render(); document.querySelector(`.q[data-i="${i}"]`).focus(); });
+document.getElementById('lang').addEventListener('click', () => { lang = lang === 'en' ? 'es' : 'en'; try { localStorage.setItem('rc_lang', lang); } catch (e) {} render(); });
+render();
+</script>
 </body>
 </html>
